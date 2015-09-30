@@ -401,9 +401,10 @@
 				endYear = this.endDate !== Infinity ? this.endDate.getUTCFullYear() : Infinity,
 				endMonth = this.endDate !== Infinity ? this.endDate.getUTCMonth() : Infinity,
 				currentDate = this.date && this.date.valueOf(),
-				today = new Date();
+				today = new Date(),
+				titleFormat = dates[this.language].titleFormat || dates['en'].titleFormat;
 			this.picker.find('.datepicker-days thead th.date-switch')
-						.text(dates[this.language].months[month]+' '+year);
+						.text(DPGlobal.formatDate(new UTCDate(year, month), titleFormat, this.language));
 			this.picker.find('tfoot th.today')
 						.text(dates[this.language].today)
 						.toggle(this.todayBtn !== false);
@@ -823,7 +824,8 @@
 			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
 			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			today: "Today"
+			today: "Today",
+			titleFormat: "MM yyyy"
 		},
 		ja: {
       			days: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
@@ -832,7 +834,8 @@
 		        months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
 		        monthsShort: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
 		        today: "今日",
-		        format: "yyyy/mm/dd"
+		        format: "yyyy/mm/dd",
+		        titleFormat: "yyyy年 MM月"
 		}
 	};
 
